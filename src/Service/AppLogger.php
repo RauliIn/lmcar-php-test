@@ -4,15 +4,12 @@ namespace App\Service;
 
 class AppLogger
 {
-    const TYPE_LOG4PHP = 'log4php';
-
     private $logger;
 
-    public function __construct($type = self::TYPE_LOG4PHP)
+    public function __construct($type)
     {
-        if ($type == self::TYPE_LOG4PHP) {
-            $this->logger = \Logger::getLogger("Log");
-        }
+       $this->logger = LoggerFactory::getLogger($type);
+       
     }
 
     public function info($message = '')
